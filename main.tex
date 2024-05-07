@@ -1,0 +1,366 @@
+\documentclass{article}
+% \documentclass[12pt,english,preprint]{article}
+
+% \usepackage{times}
+\usepackage{amssymb} %we added the package to the document
+\usepackage{float}
+\usepackage{color}
+\usepackage{hyperref,url}
+\usepackage{graphicx}
+
+\usepackage{fancyhdr}
+\bibliographystyle{plain}
+\fancyhead[L]{Tyler Mark}
+\author{Tyler Mark}
+\fancyhead[R]{\today}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+\newcommand{\partialt}[1]{\frac{\partial #1}{\partial t}}
+\newcommand{\partialx}[1]{\frac{\partial #1}{\partial x}}
+\newcommand{\partialxx}[1]{\frac{\partial^2 #1}{\partial x^2}}
+\newcommand{\partialrn}{\frac{\partial}{\partial r}}
+\newcommand{\partialr}[1]{\frac{\partial #1}{\partial r}}
+\newcommand{\partialrr}[1]{\frac{\partial^2 #1}{\partial r^2}}
+\makeatletter
+% \pagestyle{myheading}\
+
+\renewcommand{\headrulewidth}{0pt}
+
+\providecommand{\tabularnewline}{\\}
+% \usepackage{latexmk}
+% \usepackage{biblatex}
+\makeatother
+\begin{document}
+\title{Introduction to Plasma Physics by Goldston and Rutherford Questions and answers}
+
+\pagestyle{fancy}
+\date{\today}
+\maketitle
+\tableofcontents
+
+\section{Chapter 1}
+\subsection{}
+\subsection{}
+\subsection{}
+
+Question:
+
+Derive the equivalent of equation (1.34) in spherical coordinats (i.e. for the case of a point charge immersesed in a plasma). Show that the solution is $\phi \alpha exp(-r/\lambda_D)/r$.
+Equation (1.34)
+\begin{eqnarray*}
+    \frac{d^2\phi}{dx^2}\approx \frac{e^2n_{e\infty}(1+ZT_e/T_i)\phi}{\epsilon_0T_e}\\
+\end{eqnarray*}
+
+Answer:
+\begin{eqnarray*}
+    \epsilon_0\nabla^2_r\phi=en_{e\infty}(e\phi/T_e+eZ\phi/T_i)\\
+    \epsilon_0\frac{1}{r^2}\partialrn(r^2\partialr{\phi})=\frac{e^2n_{e\infty}\phi}{T_e}(1+ZT_e/T_i)\\
+    \lambda_D=(\frac{\epsilon_0 T_e}{n_{e\infty}e^2(1+ZT_e/T_i)})^{1/2}\\
+    \frac{1}{r^2}\partialrn(r^2\partialr{\phi})=\frac{\phi}{\lambda_D^2}\\
+\end{eqnarray*}
+The general solution to the the laplacian in spherical coordinates
+\begin{eqnarray*}
+    \phi=\frac{Ae^{r/\lambda_D}}{r}+\frac{Be^{-r/\lambda_D}}{r}\\
+    \phi(r\rightarrow \infty)=0 \therefore A=0\\
+\end{eqnarray*}
+
+\subsection{}
+Question: The typical distance between two electrons in a plasma is of order $n_e^{-1/3}$. Show that the potential energy associated with bringing two electrons this close together is much less than their typical kinetic energy, so long as $n_e\lambda_D^3>>1$.
+
+Answer: 
+\begin{eqnarray*}
+    U_c=\frac{e^2}{4\pi \epsilon_0 n_e^{-1/3}}\\
+    \lambda_D \equiv (\frac{\epsilon_0 T_e}{n_ee^2(1+ZT_e/T_i)})^{1/2}\\
+\end{eqnarray*}
+Assuming $T_e\approx T_i$ and $Z=1$\\
+\begin{eqnarray*}
+    T_e=2\lambda_D^2 n_e e^2/\epsilon_0\\
+    \frac{U_c}{T_e}=\frac{1}{8\pi n_e^{2/3}\lambda_D^2}\\
+    \lambda_D=n_e^{-1/3}\sqrt{\frac{T_e}{U_c 8\pi}}
+\end{eqnarray*}
+For $U_c<< T_e \rightarrow \lambda_D>>n_e^{-1/3}$. 
+
+\subsection{}
+Question: Perform an ion Child-Langmuir calculation to model the plasma sheath at a material probe.
+Assume an inter-electrode spacing of $\lambda_D\equiv (\epsilon_0T_e/n_ee^2)^{1/2}$ to model the sheath width, and a potential drop of $e\phi=-T_e$. 
+Take $T_i=0$. You may assume that the electron density is negligible in the sheath region, to make the ion Child-Langmuir calculation valid.
+Determine the ion current density, $j_i$, across the model. sheath.
+
+Answer:
+(1.16)
+\begin{eqnarray*}
+    j=\frac{-4\epsilon_0}{qL^2}(\frac{2e}{m_e})^{1/2}V^{3/2}\\
+\end{eqnarray*}
+Treating the inter-electrode spacing as the debye length, and the potential drop as 
+\begin{eqnarray*}
+    j_{ions}=\frac{-4\epsilon_0}{\lambda_D^2}(\frac{2e}{m_p})^{1/2}\phi^{3/2}\\
+    \lambda_D^2=\frac{\epsilon_0T_e}{n_ee^2}=\frac{\epsilon_0\phi}{n_ee}\\
+    j_{ions}=-4(\frac{2n_e^2e^3\phi}{m_p})^{-1/2}\\
+\end{eqnarray*}
+\section{Chapter 2}
+\subsection{}
+\subsection{}
+Question: The ionosphere is composed mostly of a proton-electron plasma immersed in the Earth's magnetic field of about $3\times 10^{-5} T$. How fast is the gravitation drift for each species?
+
+Answer:
+In spherical coordinates, the magnetic field is oriented northward.
+\begin{eqnarray*}
+    \vec{B}=B\hat{\theta}\\
+    v_g=\frac{m_i(\vec{g}\times \vec{B})}{qB^2}\\
+\end{eqnarray*}
+For a proton,
+\begin{equation}
+    v_g=0.00341 m/s
+\end{equation}
+For an electron,
+\begin{equation}
+    v_g=1.857\times 10^{-6} m/s
+\end{equation}
+\section{Chapter 3}
+\subsection{}
+Question: Prove that $<v_{y0}(y_0-y_{gc,i})>=0$ for all $\delta$.
+
+Answer: 
+(2.8)
+\begin{equation}
+    v_y=\pm iv_\perp \exp(i\omega_c t + i\delta)
+\end{equation}
+(2.9)
+\begin{equation}
+    y=y_i\pm\frac{v_\perp}{\omega_c}[\exp(i\omega t + i\delta)-\exp(i\delta)]
+\end{equation}
+(2.10)
+\begin{equation}
+    y_{gc}=y_i\mp \frac{v_\perp}{\omega_c}\exp(i\delta)
+\end{equation}
+(2.11)
+\begin{equation}
+    y=y_{gc}\pm i(\frac{v_\perp}{\omega_c})\exp(i\omega_c t + i \delta)
+\end{equation}
+(2.9)-(2.10)
+\begin{equation}
+    y-y_{gc}=\mp \frac{v_\perp}{\omega_c}\exp(i\omega t+i\delta)\\
+\end{equation}
+(2.8)[(2.9)-(2.10)]
+\begin{equation}
+    v_y(y-y_{gc})=-i\frac{v_\perp^2}{\omega_c}\exp(2(i\omega t+i\delta))
+\end{equation}
+Time averages involve a time intergral
+\begin{equation}
+    <x>=\frac{\int_0^{2\pi/\omega_c}x}{2\pi/\omega_c}
+\end{equation}
+\begin{equation}
+    <v_y(y-y_{gc})>=0
+\end{equation}
+
+\subsection{}
+Question: Evaluate $<v_{x0}(y_0-y_{gc,i})>$ for arbitrary $\delta$.
+
+Answer: 
+(2.7)
+\begin{eqnarray*}
+    v_x=Re[v_\perp\exp(i\omega_c t+ i\delta)]\\
+    y_0-y_{gc,i}=\pm Re[(\frac{v_\perp}{\omega_c}\exp(i \omega_c t + i \delta))]\\
+    <v_{x0}(y_0-y_{gc,i})>=\pm \frac{v_\perp^2}{\omega_c}\exp(2i \delta)\frac{\omega_c}{2\pi}\int_0^{2\pi/\omega_c}Re[\exp(i\omega_ct)]Re[\exp(i\omega_c t)]dt\\
+    =\pm \frac{v_\perp^2}{2\omega_c}\exp(2i\delta)
+\end{eqnarray*}
+
+\subsection{}
+Question: Assume $e\phi$ is of order W, a particle's kinetic energy, and that the gradient scale-length of the electric potential is roughly the same size, $1/k$, as the scale-length of variation of B. 
+Show that $v_E$ is the same order in $kr_L$ as $v_{grad}$.
+
+Answer: 
+\begin{eqnarray*}
+    \vec{v}_{grad}=\pm \frac{v_\perp^2}{2\omega_c}\frac{\vec{B}\times \vec{\nabla} B}{B^2}=\frac{W_\perp}{q}\frac{\vec{B}\times \vec{\nabla}B}{B^3}\\
+    \vec{v}_E=\frac{\vec{E}\times \vec{B}}{B^2}\\
+\end{eqnarray*}
+Concerning orders of magnitude
+\begin{eqnarray*}
+    v_{grad}\approx \phi \frac{\nabla B}{B^2}=\phi k \frac{1}{B}\\
+    \frac{v_E}{v_{grad}}\rightarrow\frac{-\nabla \phi \frac{1}{B}}{\phi k \frac{1}{B}}\rightarrow\frac{k}{k}\rightarrow 1
+\end{eqnarray*}
+
+\subsection{}
+Question: An anisotropic proton-electron plasma is immersed in the magnetic field from an infinite wire carrying current $I_z=10^6 A$.
+This plasma has uniform density $n=10^{19}m^{-3}$, $T_{\perp e}= T_{\perp i}=2keV$ and $T_{\parallel e}=T_{\parallel i}=5 keV$.
+At radius R away from the wire, what are the average ion and electron $\nabla B$ and curvature drift velocities?
+What is the total (ion+electron) guiding center current density $j=\sum nqv$, in the plasma (where the summation is over species), and in which direction does this current flow?
+(Ignore the magnetic field due to the current in the plasma.)
+
+\begin{eqnarray*}
+    v_{\nabla B}=\frac{W_\perp}{q}\frac{\vec{B}\times \vec{\nabla}B}{B^3}\\
+    v_{curv}=\frac{2W_\parallel}{q}\frac{\vec{B}\times \vec{\nabla}B}{B^3}\\
+    T_\perp=<W_\perp>\\
+    \frac{T_\parallel}{2}=<W_\parallel>\\
+\end{eqnarray*}
+Magnetic field for an infinite wire
+\begin{equation}
+    B=\frac{\mu_0I}{2\pi r}
+\end{equation}
+\begin{eqnarray*}
+    \vec{j}=\sum nqv\\
+    =en[(v_{\nabla B,i}+v_{curv,i})-(v_{\nabla B,e}+v_{curv,e})]
+\end{eqnarray*}
+\subsection{}
+Question: Assume $\vec{B}=\hat{z}B_0(1+\gamma z^2)$. To lowest order in $kr_L$ (i.e. only the $v_\parallel \hat{b}$ motion), calculate the bounce period for a particle moving back and forth in this magnetic well. Note that $ds=v_\parallel dt$.
+\begin{eqnarray*}
+    \frac{d}{dt}(\frac{mv_\parallel^2}{2})=-\mu v_\parallel \nabla B=-\mu \partialt{B}\\
+    <F_\parallel>=-\mu\frac{dB}{dz}\\
+    m\frac{d^2z}{dt^2}=-2\mu \gamma B_0z
+\end{eqnarray*}
+This is just a simple harmonic oscillator with the general solution
+\begin{eqnarray*}
+    z(t)=A\cos(\omega t)+B \sin(\omega t)\\
+    \omega^2=\frac{2\mu \gamma B_0}{m}\\
+\end{eqnarray*}
+Thus the gyro-period is simply
+\begin{eqnarray*}
+    \tau=\frac{2\pi}{\omega}
+\end{eqnarray*}
+
+\subsection{}
+Question: Consider a 10keV energetic ion in the Van Allen belts $\approx 10^m$ above the Earth's surface, in a dipole magnetic field of $\approx 10^{-6} T$.
+Estimate the curvature and $\nabla B$ drift speeds of this particle.
+Compare them with the gravitational drift speed.
+
+Answer:
+\begin{eqnarray*}
+    v_{curv}=\frac{2W_\parallel}{q}\frac{\vec{B}\times \nabla B}{B^3}\\
+    =\frac{2W_\parallel}{qB^2}\frac{\vec{R}_c \times \vec{B}}{R_c^2}\\
+    v_{grad}=\frac{W_\perp}{q}\frac{\vec{B}\times \nabla \vec{B}}{B^3}\\
+    <v_{curv}+v_{grad}> =\frac{T_\parallel+T_\perp}{q}\frac{\vec{B}\times \vec{\nabla}B}{B^3}\\
+    v_{g}=\frac{m(\vec{g}\times\vec{B})}{qB^2}\\
+\end{eqnarray*}
+
+\subsection{}
+Question: Calculate the analog to equation (3.35) where the $\nabla B$ drift causes the Coriolis force (this requires $\omega \times v_{grad}\neq 0$).
+In this case $v_{curv}\cdot \nabla B\neq 0$ also, so calculate the effect of the curvature drift on $\mu dB/dt$.
+Then show that the first-order interpretation of $d/dt$ on the right-hand side of equation (3.30) including $\mu v_{grad}\cdot \nabla B$ provides just the required effect of the Coriolis force on $W_\parallel$.
+In this case, $W_\parallel$ is exchanged with $W_\perp$, again without changing $\mu$. 
+(This particular situation can only arise when $\nabla \times B\neq 0$, i.e. when there are volume currents.)
+
+Answer:
+Eq (3.34) Laboratory frame Coriolis force arising from ExB drift. 
+\begin{eqnarray*}
+    m\frac{dv_\parallel}{dt}|_{\omega\times v_E}=-\frac{mv_\parallel}{R_c^2}\vec{v_E}\cdot \vec{R_c}
+\end{eqnarray*}
+Eq (3.35) 
+\begin{eqnarray*}
+    \frac{dW_\parallel}{dt}|_{\omega \times v_E}=m v_\parallel \frac{dv_\parallel}{dt}|_{\omega\times v_E}=\frac{(\nabla \phi \times B)\cdot R_r}{B^2 R_c}\frac{mv_\parallel^2}{R_c}
+\end{eqnarray*}
+Grad B drift
+\begin{eqnarray*}
+    v_{\nabla B}=\frac{W_\perp}{q}\frac{\vec{B}\times \nabla \vec{B}}{B^3}=\pm \frac{v_\perp^2}{2\omega_c}\frac{\vec{B}\times \vec{\nabla}B}{B^2}\\
+    v_\parallel m \frac{dv_\parallel}{dt}|_{\omega \times v_{\nabla B}}=\mp \frac{m v_\parallel^2 v_\perp^2}{2\omega_c R_c^2 B^2}(\vec{B}\times \nabla \vec{B})\cdot \vec{R_c}
+\end{eqnarray*}
+Curvature drift
+\begin{eqnarray*}
+    v_{curv}=\pm \frac{v_\parallel^2}{\omega_c}\frac{\vec{B}\times \nabla \vec{B}}{B^2}\\
+    v_\parallel m \frac{dv_\parallel}{dt}|_{\omega\times v_{curv}}=-\frac{mv_\parallel^2}{R_c^2}\vec{v}_{curv}\cdot \vec{R_c}\\
+    =\mp \frac{m v_\parallel^4}{\omega_cR_c^2B^2}[(\vec{B}\times \vec{\nabla}B)\cdot \vec{R_c}]
+\end{eqnarray*}
+Eq (3.21) 
+\begin{eqnarray*}
+    \frac{d}{dt}(\frac{mv_\parallel^2}{2})=-\mu \frac{dB}{dt}\\
+\end{eqnarray*}
+The effect of the curvature drift is simply the negative of the time derivative of parallel kinetic energy
+Eq (3.30)
+\begin{eqnarray*}
+    \frac{d}{dt}(\frac{mv_\parallel^2}{2})=-q \frac{d\phi}{dt}-\mu \frac{dB}{dt}\\
+    =-q [\partialt{\phi}+v_{gc}\cdot\nabla\phi]-\mu[\partialt{B}+v_{gc}\cdot \vec{\nabla}B]\\
+\end{eqnarray*}
+Considering only first order terms
+\begin{eqnarray*}
+    -qv_{\nabla B}\cdot \nabla \phi=-\frac{W_\perp}{B^3}(\vec{B}\times \vec{\nabla}B)\cdot\nabla \phi=-\frac{\mu}{B^2}(\vec{B}\times\vec{\nabla}B)\cdot\nabla\phi\\
+    -\mu v_{\nabla B}\cdot \nabla B=-\frac{\mu}{qB^3}W_\perp(\vec{B}\times \vec{\nabla}B)\cdot \vec{\nabla}B
+\end{eqnarray*}
+*Unfinished*
+
+\subsection{}
+Question: Consider a particle orbiting at radius r in the magnetic field from an infinite wire carrying current I in the z direction. 
+Imagine there is also a constant electric field of magnitude E pointing in the z direction. 
+At t=0, evaluate $dr/dt, dz/dt, dW_\perp/dt, dW_\parallel/dt$ for this particle's guiding center, in terms of E,I, r, the particle's mass m, charge q, and its initial parallel and perpendicular velocities $v_{\parallel 0},v_{\perp0}$
+
+Answer:
+Magnetic field from an infinite wire:
+\begin{eqnarray*}
+    \vec{B}=\frac{I\mu_0}{2\pi r}\hat{\phi}\\
+    \vec{\nabla}B=-\frac{I\mu_0}{2\pi r^2}\hat{r}\\
+    \vec=E_0\hat{z}\\
+    \hat{E}\times \hat{B}=-\hat{r}\\
+    \vec{B}\times\nabla\vec{B}=\hat{z}\\
+    \frac{dr}{dt}=\hat{r}\cdot\vec{v}_{gc}=\hat{r}\cdot\vec{v}_E=-\frac{E_0}{B}=-\frac{E 2\pi r}{I \mu_0}\\
+    \frac{dz}{dt}=\hat{z}\cdot\vec{v}_{gc}=\hat{z}\cdot(v_{curv}+v_{grad})=\hat{z}\cdot(\frac{2W_\parallel+W_\perp}{q}\frac{B\times\nabla B}{B^3})=\frac{2mv_{\parallel 0}^2+mv_{\perp 0}^2}{2q}\frac{2\pi}{I\mu_0} \hat{z}\\
+    \frac{dW_\perp}{dt}=\mu\frac{\partial B}{\partial t}=\mu[\partialt{B}+\vec{v}_{gc}\cdot \vec{\nabla}B]=\mu\vec{v}_{gc}\cdot \vec{\nabla}B \\
+    =\frac{mv_{\perp 0}^2E\pi}{I\mu_0}\\
+    \frac{dW_\parallel}{dt}=-\frac{mv_\parallel^2}{R_c^2}\vec{v}_{gc}\cdot\vec{R}_c=-\frac{mv_\parallel^2}{R_c^2}\vec{v}_E\cdot\vec{R}_c=\frac{mv_\parallel^2E}{R_cB}\\
+\end{eqnarray*}
+
+\subsection{}
+Question: For a field with $\nabla \times B=0$, prove that the relationship
+
+$\vec{B}\times (\hat{b}\cdot \nabla)\hat{b}=\hat{b}\times \nabla B$
+
+holds generally, thereby formally demonstrating that the curvature drift takes the form given in equatino (3.15) for vacuum fields.
+(Hint: start with $0=\hat{b}\times(\nabla \times B)$ written in index notation using the Levi-Civita symbols. Reduce this to a different vector equation and take its cross-product with $\hat{b}$ to obtain the desired result)
+
+\begin{eqnarray*}
+    0=\hat{b}\times(\vec{\nabla}\times \vec{B})\\
+    \epsilon_{ilm}\hat{b}_m\epsilon_{ijk}\frac{\partial B_k}{\partial x_j}\\
+    =(\delta_{jl}\delta_{mk}-\delta_{lk}\delta_{mj})\hat{b}_m\frac{\partial B_k}{\partial x_j}\\
+    =\hat{b_k}\frac{\partial B_k}{\partial x_j}-\hat{b}_j\frac{\partial B_k}{\partial x_j}\\
+    =\frac{\partial B}{\partial x_i}-(\hat{b}\cdot\nabla)B_k\\
+\end{eqnarray*}
+
+\section{Chapter 4}
+\subsection{}
+Question: Show explicitly that the $v_E$ drift contribution to equation (4.7) precisely cancels the $\nabla B$ drift contribution.
+
+Answer:
+
+\subsection{}
+Question: Imagine that you have an isotropic magnetized plasma with 
+\begin{equation}
+    T_{\parallel,0}=T_{\perp 0}=T_0
+\end{equation}
+Double the magnetic field slowly compared to a gyro-period, but fast compared to the energy transfer time between $T_\parallel$ and $T_\perp$. 
+What are the new values of $T_\parallel$ and $T_\perp$ (call them $T_{\parallel 1}$ and $T_{\perp 1}$)? Now let the plasma sit long enough for $T_{\parallel 1}$ and $T_{\perp 1}$ to mix
+by collisions and come to an isotropic temperature $T_1$, but not long enough for the plasma to exchange energy with the outside world. What is $T_1$? Reduce the magnetic field back down to its original 
+value slowly compared to a gyro-period, but fast compared to the energy transfer time between $T_{\parallel}$ and $T_\perp$. What are $T_{\parallel 2}$ and $T_{\perp 2}$? And after the plasma becomes isotropic, what is 
+$T_2$? This process is called 'magnetic pumping'. 
+
+Answer: 
+\begin{eqnarray*}
+    T_1=\frac{5}{3}T_0\\
+    T_{2,\perp}=\frac{5}{6}T_0\\
+    T_{2,\parallel}=\frac{5}{3}T_0\\
+    T_2=1.\bar{111}\\
+\end{eqnarray*}
+\subsection{}
+Question: Our energy conservation equation, equation (4.6), is consistent to order $kr_L$, but no higher.
+In other words, energy in the drift motion such as $m(v_{grad})^2/2$ is not included.
+However, as was mentioned before, one can also derive guiding-center drift equations in the case where $v_E$ is not assumed to be small compared to $v_0$. 
+In this case one has to include $mv_E^2/2$ in the energy equation, as well as the polarization drift in the first order $v_{gc}\cdot E$. 
+For the simplest geometry- a uniform time-independent B field in the z direction and a uniform, perpendicular, time-dependent E field in the x diredction-
+show that $(d/dt)mv_E^2/2=qv_{pol}\cdot E$.
+Draw what the drift orbits look like for ions and electrons in the case of $\dot{E}_x$ constant and positive and $E_x$ always greater than zero.
+Note that we have not calculated all the other drifts for the case where $v_E$ can be comparable to $v$ -and there are indeed other terms which come into the complete calculation-
+so this is only an exercise. Equation (4.6) is as far as we will go self-consistently for energy conservation in the drift equations.
+
+Answer:
+
+\subsection{}
+Question: For this calculation, we chose to consider $\epsilon_\perp$ a property of the medium, and thus to take the polarization drift into account implicitly through $\epsilon_\perp$ 
+(and taking $v_g$ as causing a $j_{ext}$). 
+We could instead have calculated the polarization drift's contribution to j as part of $j_{ext}$, and also its self-consistent contribution to $d\sigma_s/dt$ (where $\sigma_s$ would now be the total surface charge density),
+and then used the vacuum $\epsilon_0$ to characterize the remaining vacuum 'medium'.
+Show that both approaches give the same answer for $dE_\perp/dt$.
+
+Answer:
+Equation (4.16)
+\begin{eqnarray*}
+    \nabla \times B=\mu_0(j_{ext}+j_{pol}+\epsilon_0\dot{E})=\mu_0(j_{ext}+\epsilon\dot{E})
+\end{eqnarray*}
+
+
+\bibliography{main}
+\end{document}
